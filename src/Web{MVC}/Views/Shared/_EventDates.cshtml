@@ -1,0 +1,13 @@
+﻿@model EventViewModel
+
+@{
+    string datePatt = Constants.DatePattern;
+    var begining = Model.Begining.ToLocalTime().ToString(datePatt);
+    var ending = Model.Ending.ToLocalTime().ToString(datePatt);
+    var applicationDue = Model.ApplicationsDue.ToLocalTime().ToString(datePatt);
+}
+
+
+
+<p class="card-text">Время: @begining - @ending</p>
+<p class="card-text">Подача заявок до: @applicationDue</p>

@@ -1,0 +1,99 @@
+﻿@model EventViewModel
+@{
+    ViewData["Title"] = (Model.Id != 0 ? "Обновить" : "Создать") + " событие";
+}
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-primary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">@(Model.Id != 0 ? "Обновить" : "Создать") событие</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row">
+            <div class="border p-3">
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Name" class="form-control border-0 shadow" />
+                    <label asp-for="Name" class="ms-2">Имя</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Description" class="form-control border-0 shadow" />
+                    <label asp-for="Description" class="ms-2">Описание</label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Address" class="form-control border-0 shadow" />
+                    <label asp-for="Address" class="ms-2">Адрес</label>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="MinPersons" class="form-control border-0 shadow" />
+                    <label asp-for="MinPersons" class="ms-2">Минимум человек</label>
+                    <span asp-validation-for="MinPersons" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="MaxPersons" class="form-control border-0 shadow" />
+                    <label asp-for="MaxPersons" class="ms-2">Максимум человек</label>
+                    <span asp-validation-for="MaxPersons" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="MinAge" class="form-control border-0 shadow" />
+                    <label asp-for="MinAge" class="ms-2">Минимальный возраст</label>
+                    <span asp-validation-for="MinAge" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="MaxAge" class="form-control border-0 shadow" />
+                    <label asp-for="MaxAge" class="ms-2">Максимальный возраст</label>
+                    <span asp-validation-for="MaxAge" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Begining" class="form-control border-0 shadow" />
+                    <label asp-for="Begining" class="ms-2">Начало</label>
+                    <span asp-validation-for="Begining" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Ending" class="form-control border-0 shadow" />
+                    <label asp-for="Ending" class="ms-2">Конец</label>
+                    <span asp-validation-for="Ending" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="ApplicationsDue" class="form-control border-0 shadow" />
+                    <label asp-for="ApplicationsDue" class="ms-2">Прием заявок до</label>
+                    <span asp-validation-for="ApplicationsDue" class="text-danger"></span>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control">@(Model.Id != 0 ? "Потвердить" : "Создать")</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">
+                            На главную
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

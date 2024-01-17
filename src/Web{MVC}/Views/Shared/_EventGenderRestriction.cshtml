@@ -1,0 +1,21 @@
+﻿@model EventViewModel
+@{ 
+    #region ResolveGenderRestriction
+    string gender = "";
+
+    if (Model.GenderRestrictions == Constants.Gender_None)
+    {
+        gender = "нет";
+    }
+    if (Model.GenderRestrictions == Constants.Gender_Male)
+    {
+        gender = "Только мужчины";
+    }
+    if (Model.GenderRestrictions == Constants.Gender_Female)
+    {
+        gender = "Только женщины";
+    }
+
+    <p class="card-text">Ограничения по полу: @gender</p>
+    #endregion
+}

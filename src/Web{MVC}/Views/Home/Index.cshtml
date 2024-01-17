@@ -1,0 +1,33 @@
+﻿@model List<EventViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-xl">
+
+    @foreach(var eventItem in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                @eventItem.Name
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@eventItem.Name</h5>
+                <p class="card-text">@eventItem.Description</p>
+                <partial name="_EventDates" model="eventItem" />
+                <partial name="_EventGenderRestriction" model="eventItem" />
+                <p class="card-text">Количество человек: @eventItem.MinPersons - @eventItem.MaxPersons</p>
+                <p class="card-text">@eventItem.Address</p>
+                <div class="d-flex">
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@eventItem.Id" class="btn btn-primary me-2">Подробнее</a>
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Event" asp-action="Upsert" asp-route-id="@eventItem.Id" class="btn btn-primary me-2">Обновить</a>
+                        <a asp-controller="Event" asp-action="Delete" asp-route-id="@eventItem.Id" class="btn btn-danger me-2">Удалить</a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
